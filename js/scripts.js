@@ -1,12 +1,11 @@
  
-var ourFilms=["Yojimbo","In+A+Lonely+Place","John+Carpenters+The+Thing","Casablanca","Double+Indemnity","Dersu","Bringing+Up+Baby","Twelve+Angry+Men","The+Seventh+Seal","Out+Of+The+Past",
-"The+Apartment","2001","Winchester+73","High+Noon","Harold+And+Maud","The+Third+Man","Coming+Home","Tokyo+Story",
-"Otto+e+mezzo","Il+Bidone",
-"Modern+Times","Some+Like+It+Hot","Sweet+Smell+Of+Success","Ace+In+THe+Hole","Face+In+The+Crowd","Roma","Sunset+Boulevard","Toni+Erdmann","The+Man+Who+Shot+Liberty+Valance","The+Big+Sleep","Bicycle+Thieves","The+Battle+Of+Algiers", "This+Gun+For+Hire","On+The+Waterfront","Roman+Holiday","Dog+Day+Afternoon","Pickup+On+South+Street","The+Entertainer","Rififi","Il+vangelo+secondo+Matteo","The+Searchers","The+Spy+Who+Came+In+From+The+Cold","Murder,+My+Sweet","Ascenseur+Pour+l'échafaud","Night+Of+The+Hunter","Kind+Hearts+And+Coronets","Rome,+Open+City","La+Règle+Du+Jeu","It+Happened+One+Night","Mr.+Smith+Goes+To+Washington","Out+Of+The+Past","The+Bad+Sleep+Well","Ikiru",
-"Who's+Afraid+Of+Virginia+Woolf?","A+Streetcar+Named+Desire","Ugetsu","Throne+Of+Blood","Wild+Strawberries","African+Queen","Butch+Cassidy+And+The+Sundance+Kid","Harakiri","La+Strada","Shampoo","The+Circus","Nosferatu","I+Vitelloni","Pickpocket","Zatoichi","Stagecoach","Midnight+Cowboy","The+White+Sheik","The+Shop+Around+The+Corner","Being+There","The+Lives+Of+Others","His+Girl+Friday","City+Lights","Sherlock+Jr." ]
-console.log(ourFilms.length)
-var exceptionIds = [670, 247, 20530, 12493,  346, 11645];
-var exceptionTitles = ['Oldboy', 'The Killing', 'Late Spring', 'High and Low', 'Seven Samurai', 'Ran']
+var ourFilms=["Yojimbo","In+A+Lonely+Place","John+Carpenters+The+Thing","Casablanca","Double+Indemnity","Dersu+Uzala","Bringing+Up+Baby","Twelve+Angry+Men","The+Seventh+Seal","Out+Of+The+Past","The+Apartment","2001","Winchester+73","High+Noon","Harold+And+Maud","The+Third+Man","Coming+Home","Tokyo+Story","Otto+e+mezzo","Il+Bidone",
+"Modern+Times","Some+Like+It+Hot","Sweet+Smell+Of+Success","Ace+In+THe+Hole","Face+In+The+Crowd","Roma","Sunset+Boulevard","Toni+Erdmann","The+Man+Who+Shot+Liberty+Valance","The+Big+Sleep","Bicycle+Thieves","The+Battle+Of+Algiers", "This+Gun+For+Hire","On+The+Waterfront","Roman+Holiday","Dog+Day+Afternoon","Pickup+On+South+Street","The+Entertainer","Rififi","Il+vangelo+secondo+Matteo","The+Searchers","The+Spy+Who+Came+In+From+The+Cold","Murder,+My+Sweet","Ascenseur+Pour+léchafaud","Night+Of+The+Hunter","Kind+Hearts+And+Coronets","Rome,+Open+City","La+Règle+Du+Jeu","It+Happened+One+Night","Mr.+Smith+Goes+To+Washington","The+Bad+Sleep+Well","Ikiru",
+"Who's+Afraid+Of+Virginia+Woolf?","A+Streetcar+Named+Desire","Ugetsu","Throne+Of+Blood","Wild+Strawberries","African+Queen","Butch+Cassidy+And+The+Sundance+Kid","Harakiri","La+Strada","Shampoo","The+Circus","Nosferatu","I+Vitelloni","Pickpocket","Zatoichi","Stagecoach","Midnight+Cowboy","The+White+Sheik","The+Shop+Around+The+Corner","Being+There","The+Lives+Of+Others","City+Lights","Sherlock+Jr","The+Big+Heat","The+Desperate+Hours","His+Girl+Friday","Cairo+Station","Sullivan's+Travels","The+Harder+They+Fall","Gun+Crazy","The+Good+The+Bad+And+The+Ugly","The+Last+Detail","Serpico","Grand+Hotel","Les+Enfants+Du+Paradis","Gunfighter","Pigs+And+Battleships","The+Roaring+Twenties","Long+Days+Journey+Into+Night" ]
+
+var exceptionIds = [670, 247, 20530, 12493,  346,14168,42691,64828,11645];
+var exceptionTitles = ['Oldboy', 'The Killing', 'Late Spring', 'High and Low', 'Seven Samurai', 'Ran','Oedipus rex','the landlord'];
+console.log(ourFilms.length+exceptionIds.length)
 var BASE_URL = "http://image.tmdb.org/t/p/w185/";
 var API_KEY = "0930f20caa92e0dae95dba06f26b55e4";
 var QUERY = "https://api.themoviedb.org/3/search/movie?api_key=fa77b5a712636b454eab3f3147d80d09&query="
@@ -39,12 +38,13 @@ $(document).ready(function () {
         replies.length = 0;
         $.getJSON(QUERY + film)
             .done(update)
-            .fail(handleErr);
+            .fail(handleErr)
+             
 
     })
-    exceptionIds.forEach(function (Id) {
+   exceptionIds.forEach(function (Id) {
         replies.length = 0;
-        console.log(QUERY_ID + Id + QUERY_ID_END)
+       
         $.getJSON(QUERY_ID + Id + QUERY_ID_END)
             .done(updateX)
             .fail(handleErr);
@@ -55,24 +55,30 @@ $(document).ready(function () {
 function update(response) {
 
     res = response.results;
-    console.log(res)
-    //http://api.themoviedb.org/3/movie/263115?api_key=###&apprend_to_response=videos
+   
+    
     var picIds = [];
 
-    if(!res[0].poster_path){res[0].poster_path=res[1].poster_path}
+    if(!res[0].poster_path){
+       
+        res[0].poster_path=res[1].poster_path;
+        if(!res[0].poster_path){res[0].poster_path=res[2].poster_path; console.log("Howdy"+res[0].title)
+        }
+    
+    }
     replies.push([res[0].id, res[0].overview, res[0].backdrop_path, res[0].poster_path, res[0].title]);
 
     //replies.push([res.id,res.overview,res.backdrop_path,res.poster_path,res.title]);
 
     var r = new Array(); var mods = new Array(), j = -1;
     for (var key = 0, size = replies.length; key < size; key++) {
-
+        
         r[++j] = '<div data-toggle="modal" data-target="#myModal' + key + '"><img src=';
         r[++j] = BASE_URL + replies[key][3];
         r[++j] = " class=\"posters\" id="
         r[++j] = '\"' + replies[key][2] + '\">';
         r[++j] = '</div>';
-        mods.push('<div id="myModal' + key + '" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title"><p>' + replies[key][4] + '</p></h4></div><div class="modal-body"><p>' + replies[key][1] + '</p></div><div class="modal-footer"><button type="button" class="btn btn-default" id=' + replies[key][0] + '>Trailer</button></div></div></div></div>')
+        mods.push('<div id="myModal' + key + '" class="modal fade" role="dialog""><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 fontstyle="bold"  class="modal-title"><p>' + replies[key][4] + '</p></h4><img src='+BASE_URL + replies[key][2]+' id=' + replies[key][2] + ' /></div><div class="modal-body"><p>' + replies[key][1] + '</p></div><div class="modal-footer"><button type="button" class="btn btn-warning" id=' + replies[key][0] + '>Trailer</button></div></div></div></div>')
 
     }
     $('#theList').html(r.join(''));
@@ -96,7 +102,7 @@ function update(response) {
 function updateX(response) {
 
     res = response;
-    console.log(res)
+   
      
     var picIds = [];
 
@@ -125,6 +131,7 @@ function updateX(response) {
             $.getJSON(MOVIE_TRAILERa + event.target.id + MOVIE_TRAILERb)
                 .done(updateTrailer)
                 .fail(handleErr);
+               
         });
 
 
@@ -137,8 +144,12 @@ function updateX(response) {
 
 
 function handleErr(jqxhr, textStatus, err) {
-    console.log("Request Failed: " + textStatus + ", " + err);
+   
+    console.log("SHITE: " + textStatus + ", " + err);
 }
+
+
+
 function displayResult(poster_path) {
 
     $("#topFilm").attr("src", poster_path);
