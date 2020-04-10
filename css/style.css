@@ -15,7 +15,7 @@ td{
 
 }
 
-@media only screen and (max-width: 800px)
+@media  (max-width: 600px)
 {
     .posters {
         width: 25%;
