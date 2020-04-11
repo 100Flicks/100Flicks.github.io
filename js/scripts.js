@@ -1,11 +1,11 @@
  
-var ourFilms=["Yojimbo","In+A+Lonely+Place","John+Carpenters+The+Thing","Casablanca","Double+Indemnity","Dersu+Uzala","Bringing+Up+Baby","Twelve+Angry+Men","The+Seventh+Seal","Out+Of+The+Past","The+Apartment","2001","Winchester+73","High+Noon","Harold+And+Maud","The+Third+Man","Coming+Home","Tokyo+Story","Otto+e+mezzo","Il+Bidone",
-"Modern+Times","Some+Like+It+Hot","Sweet+Smell+Of+Success","Ace+In+THe+Hole","Face+In+The+Crowd","Roma","Sunset+Boulevard","Toni+Erdmann","The+Man+Who+Shot+Liberty+Valance","The+Big+Sleep","Bicycle+Thieves","The+Battle+Of+Algiers", "This+Gun+For+Hire","On+The+Waterfront","Roman+Holiday","Dog+Day+Afternoon","Pickup+On+South+Street","The+Entertainer","Rififi","Il+vangelo+secondo+Matteo","The+Searchers","The+Spy+Who+Came+In+From+The+Cold","Murder,+My+Sweet","Ascenseur+Pour+léchafaud","Night+Of+The+Hunter","Kind+Hearts+And+Coronets","Rome,+Open+City","La+Règle+Du+Jeu","It+Happened+One+Night","Mr.+Smith+Goes+To+Washington","The+Bad+Sleep+Well","Ikiru",
+var ourFilms=["Yojimbo","In+A+Lonely+Place","John+Carpenters+The+Thing","Casablanca","Double+Indemnity","Dersu+Uzala","Bringing+Up+Baby","Twelve+Angry+Men","The+Seventh+Seal","Out+Of+The+Past","The+Apartment","2001","Winchester+73","High+Noon","Harold+And+Maud","The+Third+Man","Coming+Home","Otto+e+mezzo","Il+Bidone",
+"Modern+Times","Some+Like+It+Hot","Sweet+Smell+Of+Success","Ace+In+THe+Hole","Face+In+The+Crowd","Roma","Sunset+Boulevard","Toni+Erdmann","The+Man+Who+Shot+Liberty+Valance","The+Big+Sleep","Bicycle+Thieves", "This+Gun+For+Hire","On+The+Waterfront","Roman+Holiday","Dog+Day+Afternoon","Pickup+On+South+Street","The+Entertainer","Rififi","Il+vangelo+secondo+Matteo","The+Searchers","The+Spy+Who+Came+In+From+The+Cold","Murder,+My+Sweet","Ascenseur+Pour+léchafaud","Night+Of+The+Hunter","Kind+Hearts+And+Coronets","La+Règle+Du+Jeu","It+Happened+One+Night","Mr.+Smith+Goes+To+Washington","Ikiru",
 "Who's+Afraid+Of+Virginia+Woolf?","A+Streetcar+Named+Desire","Ugetsu","Throne+Of+Blood","Wild+Strawberries","African+Queen","Butch+Cassidy+And+The+Sundance+Kid","Harakiri","La+Strada","Shampoo","The+Circus","Nosferatu","I+Vitelloni","Pickpocket","Zatoichi","Stagecoach","Midnight+Cowboy","The+White+Sheik","The+Shop+Around+The+Corner","Being+There","The+Lives+Of+Others","City+Lights","Sherlock+Jr","The+Big+Heat","The+Desperate+Hours","His+Girl+Friday","Cairo+Station","Sullivan's+Travels","The+Harder+They+Fall","Gun+Crazy","The+Good+The+Bad+And+The+Ugly","The+Last+Detail","Serpico","Grand+Hotel","Les+Enfants+Du+Paradis","Gunfighter","Pigs+And+Battleships","The+Roaring+Twenties","Long+Days+Journey+Into+Night" ]
 
-var exceptionIds = [670, 247, 20530, 12493,  346,14168,42691,64828,11645];
-var exceptionTitles = ['Oldboy', 'The Killing', 'Late Spring', 'High and Low', 'Seven Samurai', 'Ran','Oedipus rex','the landlord'];
-console.log(ourFilms.length+exceptionIds.length)
+var exceptionIds = [670, 247, 20530, 12493,  346,14168,42691,64828,11645,307,31589,18148,17295];
+var exceptionTitles = ['Oldboy', 'The Killing', 'Late Spring', 'High and Low', 'Seven Samurai', 'Ran','Oedipus rex','the landlord','rome open city','the bad sleep well','Tokyo Story','The Battle of Algiers'];
+//console.log(ourFilms.length+exceptionIds.length)
 var BASE_URL = "http://image.tmdb.org/t/p/w185/";
 var API_KEY = "0930f20caa92e0dae95dba06f26b55e4";
 var QUERY = "https://api.themoviedb.org/3/search/movie?api_key=fa77b5a712636b454eab3f3147d80d09&query="
@@ -32,7 +32,7 @@ replies = [];
 //http://image.tmdb.org/t/p/w185/IfB9hy4JH1eH6HEfIgIGORXi5h.jpg
 
 $(document).ready(function () {
-    console.log("readY")
+    //console.log("readY")
 
     ourFilms.forEach(function (film) {
         replies.length = 0;
@@ -55,14 +55,14 @@ $(document).ready(function () {
 function update(response) {
 
     res = response.results;
-   
+    //console.log(res)
     
     var picIds = [];
 
     if(!res[0].poster_path){
        
         res[0].poster_path=res[1].poster_path;
-        if(!res[0].poster_path){res[0].poster_path=res[2].poster_path; console.log("Howdy"+res[0].title)
+        if(!res[0].poster_path){res[0].poster_path=res[2].poster_path;
         }
     
     }
@@ -145,7 +145,7 @@ function updateX(response) {
 
 function handleErr(jqxhr, textStatus, err) {
    
-    console.log("SHITE: " + textStatus + ", " + err);
+    
 }
 
 
