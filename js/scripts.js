@@ -55,7 +55,7 @@ $(document).ready(function () {
 function update(response) {
 
     res = response.results;
-    console.log(res)
+    //console.log(res)
     
     var picIds = [];
 
