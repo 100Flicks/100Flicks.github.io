@@ -1,6 +1,6 @@
  
 var ourFilms=["In+A+Lonely+Place","Lazzaro+Felice","Dersu+Uzala","Bringing+Up+Baby","Twelve+Angry+Men","The+Seventh+Seal","The+Apartment","Harold+And+Maud", "Otto+e+mezzo","Il+Bidone",
-"Modern+Times","Sweet+Smell+Of+Success","Roma","Sunset+Boulevard","Toni+Erdmann","The+Big+Sleep", "This+Gun+For+Hire","Roman+Holiday","Dog+Day+Afternoon","Pickup+On+South+Street","Onibaba","Murder,+My+Sweet","Ascenseur+Pour+léchafaud","Kind+Hearts+And+Coronets","La+Règle+Du+Jeu","Ikiru","Amarcord",
+"Modern+Times","Sweet+Smell+Of+Success","Roma","Sunset+Boulevard","Toni+Erdmann","The+Big+Sleep", "This+Gun+For+Hire","Dog+Day+Afternoon","Pickup+On+South+Street","Onibaba","Murder,+My+Sweet","Ascenseur+Pour+léchafaud","Kind+Hearts+And+Coronets","La+Règle+Du+Jeu","Ikiru","Amarcord",
 ,"Ugetsu","Wild+Strawberries","La+Strada","I+Vitelloni","Pickpocket","Stagecoach","Midnight+Cowboy","Sherlock+Jr","The+Big+Heat","His+Girl+Friday","Cairo+Station","Pigs+And+Battleships","The+Roaring+Twenties","Long+Days+Journey+Into+Night" ]
  
 var exceptionIds = [25364,833,24192,804,5801,927547,1092,18929,14886,396,49964,57389,3764,499,44018,453270,31542,5156, 247, 20530, 12493,  346,11645,307,31589,18148,17295,14537,17409,28528,439,19426,29264,1040,25905,776527,16672,46918,24382,42229,36871,17962,26893,36872,505192,99329,265226,24167,95597,20271,41050,96454,60243,28272,13898,288,11878,822,391039,30017];
